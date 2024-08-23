@@ -11,19 +11,19 @@ def run(playwright):
     page.set_default_timeout(200000)
 
     # Navigate to the page
-    page.goto("https://www.property24.com/estate-agents/plus-group-properties/12885")
+    page.goto("https://web.facebook.com/ads/archive/render_ad/?id=863596179026952&access_token=EAAcZB2XVyuJ8BO0MGZBp8uPloUlFcbD2aEus6ZCwrpSGZByBzCjhCI27sCIthxbxXKSpuAsINZBPblnL1f5KZCMACJeZAsgYFlYP9x3ofFMMFlFPM1XAZBW2csD9XdFGW3hkbzFZCt8b921jzdupfnJpZARcIxCnFqwsNaZCbZBaQ3pJgZCu8QCSqzpgIsWhHATYZD&_rdc=1&_rdr")
 
     # Wait for user interaction
-    page.get_by_role("link", name="Contact Number Show Contact Number").click()
-    print('clicked On Button')
-    sys.stdout.flush()
-    time.sleep(60)
+    # page.get_by_role("link", name="Contact Number Show Contact Number").click()
+    # print('clicked On Button')
+    # sys.stdout.flush()
+    time.sleep(10)
     print('Sleeping for 60 Secs.....')
     sys.stdout.flush()
 
     # Capture screenshot
     os.makedirs('screenshots', exist_ok=True)
-    page.screenshot(path="screenshots/capture.png")
+    page.screenshot(path="screenshots/facebook.png")
     print('Screenshot captured')
     sys.stdout.flush()
 
