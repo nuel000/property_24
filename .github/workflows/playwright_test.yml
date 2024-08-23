@@ -1,3 +1,39 @@
+# name: Playwright Test
+
+# on:
+#   workflow_dispatch:
+
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Set up Python
+#       uses: actions/setup-python@v2
+#       with:
+#         python-version: '3.x'
+#     - name: Install dependencies
+#       run: |
+#         python -m pip install --upgrade pip
+#         pip install playwright
+#         playwright install chromium
+#         playwright install firefox
+#     - name: Debug information
+#       run: |
+#         pwd
+#         ls -la
+#         which python
+#         python --version
+#     - name: Run Playwright script
+#       run: python main.py
+#     - name: Upload screenshot
+#       uses: actions/upload-artifact@v2
+#       with:
+#         name: screenshot
+#         path: screenshots/facebook.png
+
+
+
 name: Playwright Test
 
 on:
@@ -6,28 +42,39 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v2
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: '3.x'
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install playwright
         playwright install chromium
         playwright install firefox
-    - name: Debug information
+
+    - name: Install Google Chrome
       run: |
-        pwd
-        ls -la
-        which python
-        python --version
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo dpkg -i google-chrome-stable_current_amd64.deb
+        sudo apt-get install -f
+
+    - name: Verify Google Chrome Path
+      run: |
+        which google-chrome
+        google-chrome --version
+
     - name: Run Playwright script
       run: python main.py
+
     - name: Upload screenshot
       uses: actions/upload-artifact@v2
       with:
         name: screenshot
         path: screenshots/facebook.png
+
