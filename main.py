@@ -5,7 +5,7 @@ import os
 import sys
 
 def run(playwright):
-    browser = playwright.chromium.launch(headless=True)  # Changed to headless mode for GitHub Actions
+    browser = playwright.firefox.launch(headless=True)  # Changed to headless mode for GitHub Actions
     context = browser.new_context()
     page = context.new_page()
     page.set_default_timeout(200000)
